@@ -6,7 +6,17 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('')
+        fetch('http://localhost:5000/orders', {
+            method: 'GET',
+            //send toke form client side
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }, [])
 
     // useEffect( () =>{
