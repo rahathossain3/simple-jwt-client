@@ -5,6 +5,10 @@ const Orders = () => {
     // const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
 
+    useEffect(() => {
+        fetch('')
+    }, [])
+
     // useEffect( () =>{
     //     fetch('http://localhost:5000/orders', {
     //         method: 'GET', 

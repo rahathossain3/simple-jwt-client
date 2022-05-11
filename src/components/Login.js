@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const inputStyle = {
@@ -9,7 +9,7 @@ const inputStyle = {
 }
 
 const Login = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleLogin = event => {
         event.preventDefault();
         const email = event.target.email.value;
@@ -24,8 +24,16 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
+                if (data.success) {
+                    //store local storage
+                    localStorage.setItem('accessToken', data.accessToken);
+                    navigate('/orders');
+                }
+
+
                 console.log(data);
             })
+        //   console.log(email, password)
 
         // fetch('http://localhost:5000/login', {
         //     method: 'POST',
